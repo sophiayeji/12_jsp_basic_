@@ -14,33 +14,35 @@
 		2. 1 ~ 12까지 월에 표기 <br>
 		3. 1 ~ 31까지 일에 표기 <br>
 	</p>
+
 	<select>
-		<%
-			for(int i=2021; i>=1990; i--)	{
+		<% 
+			for (int i = 2021; i >= 1900; i--) {
 		%>
-			<option value<%=i %>><%=i %></option>
-		<%
+				<option value=<%=i %>><%=i %></option>
+		<% 			
 			}
-		
 		%>
 	</select>년
 	<select>
-		<%
-			for(int i=1; i<=12; i++) {
+		<% 
+			for (int i = 1; i <= 12; i++) {
 		%>
-			<option value<%=i %>><%=i %></option>
-		<%
+				<option value=<%=i %>><%=i %></option>
+		<% 			
 			}
 		%>
 	</select>월
-   	<select>
-   		<%
-   		for(int i=1; i<=31; i++){
-   		%>
-   		<% 
-   			}
-   		%>   	
-   	</select>일	
-   		
+	<select>
+		<% 
+		for (int i = 1; i <= 31; i++) {
+		%>
+				<option value=<%=i %>><%=i %></option>
+		<% 			
+			}
+		%>
+	</select>일
+	
+	
 </body>
 </html>

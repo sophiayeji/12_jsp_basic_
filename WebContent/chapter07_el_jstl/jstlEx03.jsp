@@ -43,15 +43,64 @@
 			${변수명.step}    : for문의 증가값
 			
 	 --%>
-		<h3>1) forEach문</h3>
-		<c:forEach var="i" begin="1" end="10">
-			${i }
-		</c:forEach>
-		<hr>
 	
-		<c:forEach var="i" begin="1" end="10" step="${i=i+2}">
-			${i }
-		</c:forEach>
-		<hr>
+	<h3>1) forEach문</h3>
+	<c:forEach var="i" begin="1" end="10">
+		${i } 
+	</c:forEach>
+	<hr>
+	
+	<c:forEach var="i" begin="1" end="10" step="${i = i + 2 }" >
+		${i } 
+	</c:forEach>
+	<hr>
+	
+	<h3>2) foreach문</h3>
+	<c:forEach var="data" items="${datas }" >
+		${data } 
+	</c:forEach>
+	<hr>
+	
+	<c:forEach var="data" items="${datas }" varStatus="i">
+		<p>${data } / ${i.index } / ${i.count } / ${i.first }</p> 
+	</c:forEach>
+	
+	<hr>
+	
+	<table border="1">
+		<tr>
+			<th>상품코드</th>
+			<th>상품이름</th>
+			<th>부서코드</th>
+			<th>부서이름</th>
+			<th>담당자코드</th>
+			<th>담당자이름</th>
+		</tr>
+		
+		<c:choose>
+			<c:when test="${empty productList }">
+				<tr>
+					<td colspan="6">조회된 데이터가 없습니다.</td>
+				</tr>
+			</c:when>
+			<c:otherwise>
+				<c:forEach var="productDTO"  items="${productList }">
+					<tr>
+						<td>${productDTO.pdCd }</td>
+						<td>${productDTO.pdNm }</td>
+						<td>${productDTO.deptCd }</td>
+						<td>${productDTO.deptNm }</td>
+						<td>${productDTO.mgrCd }</td>
+						<td>${productDTO.mgrNm }</td>
+					</tr>
+				</c:forEach>
+			</c:otherwise>
+		</c:choose>
+	</table>
+	
+	
+	
+	
+	
 </body>
 </html>

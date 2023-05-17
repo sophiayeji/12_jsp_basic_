@@ -8,7 +8,7 @@
 <body>
 	<div align="center">
 		<h2>로그인 폼</h2>
-		<form action="" method="">
+		<form action="servletEx03" method="post">
 			<table border="1">
 				<tr>
 					<th>아이디</th>

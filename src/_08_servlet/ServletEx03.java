@@ -22,6 +22,11 @@ public class ServletEx03 extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+		HttpSession session = request.getSession(); 		    // 세션 생성방법
+		session.setAttribute("id", request.getParameter("id")); // 세션 등록방법
+		session.setAttribute("role", "admin");
+		session.setAttribute("isMobile", false);
+		
 		RequestDispatcher dis = request.getRequestDispatcher("chapter08_servlet/servletEx03Action.jsp");
 		dis.forward(request, response);
 		

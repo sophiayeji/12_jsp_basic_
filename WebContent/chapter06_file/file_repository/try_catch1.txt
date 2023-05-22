@@ -1,7 +1,0 @@
-		try {
-			getConnection();
-		} catch (Exception e) {
-			e.printStackTrace();
-		} finally {
-			getClose();
-		}

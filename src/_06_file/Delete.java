@@ -30,7 +30,7 @@ public class Delete extends HttpServlet {
 		File file = new File(saveDirectory + "\\" + deletefileName);
 		
 		String jsScript = "";
-		if(file.exists() ) {
+		if(file.exists()) {
 			file.delete();
 				   jsScript  = "<script>";
 			       jsScript += "alert('파일을 삭제하였습니다.');";

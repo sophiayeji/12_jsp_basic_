@@ -41,19 +41,24 @@ public class upload2 extends HttpServlet {
 		while (files.hasMoreElements()) { // 다음정보가 있으면 
 			String element = (String)files.nextElement();
 		
-			String OriginalFileName= multipartRequest.getOriginalFileName(element); // 업로드한 파일명을 반환함
-			
-			UUID uuid = UUID.randomUUID(); // UUID.randomUUID(); 해쉬 생성 메서드
-			String date = sdf.format(new Date()); // 현재시간을 반환 
-			String renameFileName = date + "_" + uuid +"_" + OriginalFileName; // 새로운 파일명 생성  
-			
-			//System.out.println("originalFileName" +OriginalFileName );
-			//System.out.println("renameFileName" + renameFileName);
-			
-			File file = new File(saveDirectory + "\\" +OriginalFileName); // 기존에 업로드된 파일명을 반환 
-			File renameFile = new File(saveDirectory + "\\" +renameFileName); // 새로운 파일명으로 새로운 파일 생성
-			file.renameTo(renameFile); // 기존에 업로드한 파일을 변환된 파일명으로 이름변경(원본 파일을 rename파일로 바꿔줌)
-			
+			if(multipartRequest.getOriginalFileName(element) !=null) { // 원본파일명이 있으면 > 파일을 업로드했으면 
+				
+				System.out.println("element" + element);
+
+				String OriginalFileName= multipartRequest.getOriginalFileName(element); // 업로드한 파일명을 반환함
+				
+				UUID uuid = UUID.randomUUID(); // UUID.randomUUID(); 해쉬 생성 메서드
+				String date = sdf.format(new Date()); // 현재시간을 반환 
+				String renameFileName = date + "_" + uuid +"_" + OriginalFileName; // 새로운 파일명 생성  
+				
+				//System.out.println("originalFileName" +OriginalFileName );
+				//System.out.println("renameFileName" + renameFileName);
+				
+				File file = new File(saveDirectory + "\\" +OriginalFileName); // 기존에 업로드된 파일명을 반환 
+				File renameFile = new File(saveDirectory + "\\" +renameFileName); // 새로운 파일명으로 새로운 파일 생성
+				file.renameTo(renameFile); // 기존에 업로드한 파일을 변환된 파일명으로 이름변경(원본 파일을 rename파일로 바꿔줌)
+				
+			}
 		}
 		response.setContentType("text/html; charset=UTF-8");
 		PrintWriter out = response.getWriter();
